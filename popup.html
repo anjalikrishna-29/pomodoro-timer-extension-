@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pomodoro Focus Timer</title>
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body class="focus-mode">
+  <div class="app-container">
+    <!-- Header with tab selectors -->
+    <header>
+      <div class="title">POMODORO</div>
+      <div class="mode-tabs">
+        <button id="focusTab" class="mode-tab active">Focus</button>
+        <button id="breakTab" class="mode-tab">Break</button>
+      </div>
+    </header>
+
+    <!-- Circular Progress Indicator -->
+    <div id="timerContainer" class="timer-container">
+      <svg class="progress-ring" width="200" height="200">
+        <!-- Gray background track -->
+        <circle class="progress-ring-bg" cx="100" cy="100" r="90" fill="transparent" />
+        <!-- Glowing dynamic progress stroke -->
+        <circle id="progressCircle" class="progress-ring-circle" cx="100" cy="100" r="90" fill="transparent" 
+                stroke-dasharray="565.48" stroke-dashoffset="0" />
+      </svg>
+      <div class="timer-content">
+        <span id="timer" class="timer-time">25:00</span>
+        <span id="timerLabel" class="timer-state-label active">Focusing</span>
+      </div>
+    </div>
+
+    <!-- Timer Controls -->
+    <div class="controls-container">
+      <button id="resetBtn" class="btn btn-secondary" title="Reset Session">
+        <!-- Reset SVG -->
+        <svg viewBox="0 0 24 24">
+          <path d="M12 5V1L7 6l5 5V7c3.31 0 6 2.69 6 6s-2.69 6-6 6-6-2.69-6-6H4c0 4.42 3.58 8 8 8s8-3.58 8-8-3.58-8-8-8z"/>
+        </svg>
+      </button>
+      
+      <button id="startStopBtn" class="btn btn-primary" title="Start/Pause">
+        <!-- Start/Play SVG (default) -->
+        <svg id="playIcon" viewBox="0 0 24 24">
+          <path d="M8 5v14l11-7z"/>
+        </svg>
+        <!-- Pause SVG (hidden initially) -->
+        <svg id="pauseIcon" viewBox="0 0 24 24" style="display: none;">
+          <path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/>
+        </svg>
+      </button>
+    </div>
+
+    <!-- Duration Configuration Steppers -->
+    <div class="settings-panel">
+      <div class="settings-row">
+        <div class="settings-label">
+          <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/></svg>
+          Focus Time
+        </div>
+        <div class="stepper">
+          <button id="focusMinus" class="stepper-btn">&minus;</button>
+          <span id="focusVal" class="stepper-value">25</span>
+          <button id="focusPlus" class="stepper-btn">&plus;</button>
+        </div>
+      </div>
+      
+      <div class="settings-row">
+        <div class="settings-label">
+          <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/></svg>
+          Break Time
+        </div>
+        <div class="stepper">
+          <button id="breakMinus" class="stepper-btn">&minus;</button>
+          <span id="breakVal" class="stepper-value">5</span>
+          <button id="breakPlus" class="stepper-btn">&plus;</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="popup.js"></script>
+</body>
+</html>
